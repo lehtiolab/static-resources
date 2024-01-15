@@ -23,6 +23,7 @@ To set it up per VM:
 - Write in /etc/rstudio/rserver.conf the line: `www-port=${your-port}`
 - Install docker (according to docker website)
 - Enable host networking so docker wont interfere with firewall, in `/etc/docker/daemon.json` put the key `{ "iptables": false }`
+- Configure docker to use data volume for images: in `/etc/docker/daemon.json` put the key `{ "data-root": "/srv/storage" }`
 - Open firewall to rstudio, for each VPN IP: `sudo ufw allow from ${vpn-ip} to any port ${your-rstudio-port}`
 
 

@@ -14,6 +14,8 @@ there is a 200G LVM disk on each VM. Note that there is thus no sharing of homed
 be used for largish data storage.
 
 ### To set it up per VM:
+The VMs are delivered by IT with ufw, blocking all traffic except for port 22 over our VPN. To set them up:
+
 - Login to VM
 - Create group as we are not syncing groups with e.g. LDAP: `sudo addgroup --gid ${admin-gid} storagegroup`
 - Create smb credentials file, `/root/.smbcredentials` containing `user=XXXX, password=XXXXX, domain=SCILIFELAB` lines for your admin user
@@ -24,7 +26,7 @@ be used for largish data storage.
 - Write in /etc/rstudio/rserver.conf the line: `www-port=${your-port}`
 - Install docker (according to docker website)
 - Enable host networking so docker wont interfere with firewall, in `/etc/docker/daemon.json` put the key `{ "iptables": false }`
-- Open firewall to rstudio, for each VPN IP: `sudo ufw allow from ${vpn-ip} to any port ${your-rstudio-port}`
+- Open firewall to other ports from client networks at scilife: `sudo ufw allow from ${scilife-ip} to any`
 
 
 ### Storage dir for a new user:

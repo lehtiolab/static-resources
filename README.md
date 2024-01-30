@@ -16,5 +16,7 @@ Configuration files to import by nextflow on our systems
 ## test-data
 This folder is not on master branch, but contains datasets that serve as test input to 
 various lab analysis pipelines. As these files are usually large, we avoid downloading them 
-when git cloning, until the specific files are needed.
+when git cloning, until the specific files are needed. The following test data are there:
+
+- pgt pipeline (branch pgt-testdata)
 

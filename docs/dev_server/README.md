@@ -27,6 +27,7 @@ The VMs are delivered by IT with ufw, blocking all traffic except for port 22 ov
 - Install docker (according to docker website)
 - Enable host networking so docker wont interfere with firewall, in `/etc/docker/daemon.json` put the key `{ "iptables": false }`
 - Open firewall to other ports from client networks at scilife: `sudo ufw allow from ${scilife-ip} to any`
+- Install sshfs for access to UPPMAX-Bianca
 
 
 ### Storage dir for a new user:

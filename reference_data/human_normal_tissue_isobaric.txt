@@ -1,0 +1,11 @@
+PXD006291_UUtissue_set1	tmt10plex
+PXD006291_UUtissue_set2	tmt10plex
+PXD006559_platelets	tmt10plex
+PXD009131_pancreatic_islets	tmt10plex
+PXD010899_plasma_pool1	tmt10plex
+PXD010899_plasma_pool2	tmt10plex
+PXD010899_plasma_pool3	tmt10plex
+PXD010899_plasma_pool4	tmt10plex
+PXD013284_CD4Tcells_donor1	tmt6plex
+PXD013284_CD4Tcells_donor2	tmt6plex
+PXD013284_CD4Tcells_donor4	tmt6plex

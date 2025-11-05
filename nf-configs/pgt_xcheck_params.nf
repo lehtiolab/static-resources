@@ -9,3 +9,5 @@ data_file_path = '/cfs/klemming/projects/supr/snic2019-35-26/kantele_runs/storag
 
 // For storing big stuff like reference data
 bigdata_file_path = '/cfs/klemming/projects/supr/snic2019-35-26/kantele_runs/reference
+
+includeConfig "https://raw.githubusercontent.com/lehtiolab/static-resources/${external_config_version}/nf-configs/pgt.config"

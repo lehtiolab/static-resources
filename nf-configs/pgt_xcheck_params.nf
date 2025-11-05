@@ -5,9 +5,9 @@ params {
 
 
 // Kantele lib files on dardel
-data_file_path = '/cfs/klemming/projects/supr/snic2019-35-26/kantele_runs/storage/__kantele_library 
+data_file_path = '/cfs/klemming/projects/supr/snic2019-35-26/kantele_runs/storage/__kantele_library'
 
 // For storing big stuff like reference data
-bigdata_file_path = '/cfs/klemming/projects/supr/snic2019-35-26/kantele_runs/reference
+bigdata_file_path = '/cfs/klemming/projects/supr/snic2019-35-26/kantele_runs/reference'
 
 includeConfig "https://raw.githubusercontent.com/lehtiolab/static-resources/${external_config_version}/nf-configs/pgt.config"

@@ -1,0 +1,77 @@
+external_config_version = 'main'
+
+// Function to ensure that resource requirements don't go beyond
+// a maximum limit
+def check_max(obj, type) {
+  if(type == 'memory'){
+    try {
+      if(obj.compareTo(params.max_memory as nextflow.util.MemoryUnit) == 1) {
+        return params.max_memory as nextflow.util.MemoryUnit
+      } else {
+        return obj
+}
+    } catch (all) {
+      println "   ### ERROR ###   Max memory '${params.max_memory}' is not valid! Using default value: $obj"
+      return obj
+    }
+  } else if(type == 'time'){
+    try {
+      if(obj.compareTo(params.max_time as nextflow.util.Duration) == 1)
+        return params.max_time as nextflow.util.Duration
+      else
+        return obj
+    } catch (all) {
+      println "   ### ERROR ###   Max time '${params.max_time}' is not valid! Using default value: $obj"
+      return obj
+    }
+  } else if(type == 'cpus'){
+    try {
+      return Math.min( obj, params.max_cpus as int )
+    } catch (all) {
+      println "   ### ERROR ###   Max cpus '${params.max_cpus}' is not valid! Using default value: $obj"
+      return obj
+    }
+  }
+}
+
+includeConfig "https://raw.githubusercontent.com/lehtiolab/static-resources/${external_config_version}/nf-configs/pdc_dardel.config"
+
+// Since spectronaut has one license-seat per node, we can specify a maximum
+// number of nodes to use, centralized here
+max_nodes = 20
+
+
+// Always overbook half a node with cpus=130,
+// so we cannot run multiple processes on a single node.
+// This is done because that is incompatible with license, program will crash
+process {
+  withName: generateLibrary {
+    maxForks = max_nodes
+    cpus = 130
+    memory = 64.G
+  }
+
+  withName: mergePsar {
+    maxForks = max_nodes
+    cpus = 130
+    memory = 230.G
+  }
+
+  withName: searchDIA {
+    maxForks = max_nodes
+    cpus = 130
+    memory = 64.G
+  }
+
+  withName: mergeSNE {
+    maxForks = max_nodes
+    cpus = 130
+    memory = 230.G
+  }
+
+  withName: quantReport {
+    maxForks = max_nodes
+    cpus = 130
+    memory = 230.G
+  }
+}
